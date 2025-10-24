@@ -6,13 +6,16 @@ import save from '../../assets/save.png';
 import jack from '../../assets/jack.png';
 import user_profile from '../../assets/user_profile.jpg';
 
+import './video-player.css';
 
 import React from 'react'
 
-const VideoPlayer = () => {
+const VideoPlayer = ({videoId}) => {
+    
   return (
     <div className='play-video'>
-        <video src={video1} controls autoPlay muted></video>
+        {/* <video src={video1} controls autoPlay muted></video> */}
+        <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <h3>Best Yooutube Channel to Laern Web Development</h3>
         <div className='play-video-info'>
             <p>1525 Views &bull; 2days ago</p>
@@ -22,6 +25,7 @@ const VideoPlayer = () => {
                 <span><img src={share} alt="" />Share</span>
                 <span><img src={save} alt="" />Save</span>
             </div>
+        </div>
             <hr />
             <div className='publisher'>
                 <img src={jack} alt="" />
@@ -96,7 +100,7 @@ const VideoPlayer = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
   )
