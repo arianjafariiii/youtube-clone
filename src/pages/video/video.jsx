@@ -10,8 +10,8 @@ const Video = () => {
   const {categoryId, videoId} = useParams();
   return (
     <div className='play-container'>
-      <VideoPlayer categoryId={categoryId} videoId={videoId} />
-      <Recommended/>
+      <VideoPlayer  videoId={videoId} />
+      <Recommended categoryId={categoryId}/>
     </div>
   )
 }

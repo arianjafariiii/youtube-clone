@@ -12,11 +12,14 @@ import './video-player.css';
 
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
+import { useParams } from 'react-router-dom';
 
-const VideoPlayer = ({videoId}) => {
+const VideoPlayer = () => {
     const [apiData, setApiData] = useState(null);
     const [channelData, setChannelData] = useState(null);
     const [commentData, setCommentData] = useState([]);
+
+    const {videoId} = useParams();
 
     const fetchVideoData = async () => {
         const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
@@ -41,7 +44,7 @@ const VideoPlayer = ({videoId}) => {
 
     useEffect (() => {
         fetchVideoData()
-    }, []);
+    }, [videoId]);
 
     useEffect(() => {
         fetchOtherData()
@@ -70,7 +73,7 @@ const VideoPlayer = ({videoId}) => {
                 </div>
                 <button>Subscribe</button>
             </div>
-            <div className="vid-descripsion">
+            <div className="vid-description">
                 <p>{apiData ? apiData.snippet.description.slice(0, 250) : 'Description here'}</p>
                 <hr />
                 <h4>{apiData ? value_convertor(apiData.statistics.commentCount) : ''} Comments</h4>
